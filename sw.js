@@ -1,0 +1,3 @@
+self.addEventListener('install',function(){self.skipWaiting();});
+self.addEventListener('activate',function(e){e.waitUntil(self.clients.claim());});
+self.addEventListener('fetch',function(e){if(e.request.mode==='navigate'){e.respondWith(fetch(e.request).catch(function(){return new Response('<!DOCTYPE html><meta charset=utf-8><meta name=viewport content="width=device-width"><body style="margin:0;height:100vh;display:grid;place-items:center;background:#071F4A;color:#fff;font:16px Tahoma;text-align:center"><div><b style="font-size:24px">إتقان</b><p>مفيش إنترنت دلوقتي. اتأكد من الاتصال وافتح التطبيق تاني.</p></div>',{headers:{'content-type':'text/html; charset=utf-8'}});}));}});

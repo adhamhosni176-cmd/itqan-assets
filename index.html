@@ -9,22 +9,40 @@
 <meta name="copyright" content="جميع الحقوق محفوظة © 2026 أدهم حسني إبراهيم">
 <meta name="theme-color" content="#071F4A">
 <meta name="robots" content="noindex">
-<link rel="icon" type="image/png" href="itqan-favicon.png">
-<link rel="apple-touch-icon" href="itqan-logo.png">
+<meta name="application-name" content="إتقان">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="إتقان">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/icon-180.png">
 <style>
 html,body{margin:0;height:100%;background:#071F4A;overflow:hidden}
 iframe{position:fixed;inset:0;width:100%;height:100%;border:0;display:block;z-index:2}
-.ld{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:#E9CF94;font:500 15px Tahoma,Arial,sans-serif;z-index:1}
-.ld img{width:92px;height:92px;animation:p 1.6s ease-in-out infinite}
-.ld i{display:block;width:140px;height:3px;border-radius:3px;background:rgba(255,255,255,.12);overflow:hidden;position:relative}
-.ld i:after{content:"";position:absolute;inset:0;width:40%;background:linear-gradient(90deg,#1A9C8E,#D4B06A);animation:m 1.3s ease-in-out infinite}
-@keyframes p{50%{transform:scale(1.06)}}
-@keyframes m{0%{transform:translateX(260%)}100%{transform:translateX(-120%)}}
+.ld{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:#E9CF94;font:500 15px Tahoma,Arial,sans-serif;z-index:1}
+.ld .rg{position:relative;width:116px;height:116px;display:grid;place-items:center}
+.ld .rg img{width:80px;height:80px}
+.ld .rg svg{position:absolute;inset:0;animation:s 1.2s linear infinite}
+@keyframes s{to{transform:rotate(360deg)}}
 </style>
 </head>
 <body>
 <!-- إتقان – فكرة وتصميم وتطوير: أدهم حسني إبراهيم. جميع الحقوق محفوظة © 2026 -->
-<div class="ld" aria-hidden="true"><img src="itqan-logo.png" alt=""><b style="font-size:26px;color:#fff">إتقان</b><span>جارٍ فتح المنظومة…</span><i></i></div>
+<div class="ld" aria-hidden="true"><div class="rg"><svg viewBox="0 0 116 116" width="116" height="116"><circle cx="58" cy="58" r="54" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="4"/><circle cx="58" cy="58" r="54" fill="none" stroke="#D4B06A" stroke-width="4" stroke-linecap="round" stroke-dasharray="90 340"/></svg><img src="/logo.png" alt=""></div><b style="font-size:26px;color:#fff">إتقان</b><span>جارٍ فتح المنظومة…</span></div>
 <iframe src="https://script.google.com/macros/s/AKfycbx9g4DV68HZl2MBWHe1AvqPRR7mK72qtfJgJivtcOejPLXJJpdaLzycqCrMj1i-4Pri/exec" title="إتقان" allow="clipboard-read; clipboard-write; fullscreen"></iframe>
+<script>
+(function(){var A=null,D=null;
+function app(){try{return matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;}catch(e){return false;}}
+function ok(o){try{return /(^|\.)googleusercontent\.com$/.test(new URL(o).hostname);}catch(e){return false;}}
+function send(m){if(A)try{A.postMessage(m,'*');}catch(e){}}
+addEventListener('beforeinstallprompt',function(e){e.preventDefault();D=e;send({itqan:'canInstall',v:true});});
+addEventListener('appinstalled',function(){D=null;send({itqan:'installed'});});
+addEventListener('message',function(e){if(!ok(e.origin))return;var d=e.data||{};
+ if(d.itqan==='hello'){A=e.source;send({itqan:'app',v:app()});send({itqan:'canInstall',v:!!D});}
+ if(d.itqan==='install'&&D){var p=D;D=null;p.prompt();p.userChoice.then(function(r){if(r&&r.outcome==='accepted')send({itqan:'installed'});else{D=p;}send({itqan:'canInstall',v:!!D});}).catch(function(){});}});
+if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js').catch(function(){});
+})();
+</script>
 </body>
 </html>
